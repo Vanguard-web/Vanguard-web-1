@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VanguardSMP — Official Stream</title>
+  <meta name="description" content="VanguardSMP adalah server Minecraft dengan 300+ member aktif, tersedia untuk JAVA dan BEDROCK. Ayo bergabung sekarang juga!">
+  <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #0d1b2a;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .brand {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    header .brand span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #b0bec5;
+    }
+
+    header .logo-kanan img {
+      height: 55px;
+      width: 55px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      transition: transform 0.3s ease;
+    }
+
+    header .logo-kanan img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 90px 20px;
+      background: linear-gradient(180deg, #2c3e50, #34495e);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      animation: fadeDown 1s ease-in-out;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .btn {
+      display: inline-block;
+      background: #1a4db3;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero .btn:hover {
+      background: #0f3a91;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+
+    /* Section Info */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 70px 20px;
+      background: #fff;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #1a237e;
+    }
+
+    .card ul {
+      text-align: left;
+      margin: 0 auto;
+      display: inline-block;
+    }
+
+    .card ul li {
+      margin: 6px 0;
+    }
+
+    /* Card untuk VERSI MINECRAFT */
+    #version-card {
+      background: white;
+      padding: 30px; /* Anda dapat mengubah padding sesuai kebutuhan */
+      border-radius: 15px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+    }
+
+    #version-card.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-in-out;
+    }
+
+    #version-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    #version-card h3 {
+      margin-bottom: 12px;
+      color: #1a237e;
+    }
+
+    #version-card ul {
+      text-align: left;
+      margin: 0 auto;
+      display: inline-block;
+    }
+
+    #version-card ul li {
+      margin: 6px 0;
+    }
+
+    /* Tombol di card */
+    .card .btn {
+      margin-top: 18px;
+      background: #1a4db3;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      align-self: center;
+    }
+
+    .card .btn:hover {
+      background: #0f3a91;
+      transform: scale(1.05);
+    }
+
+    /* Komentar */
+    .comments {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .comments h3 {
+      margin-bottom: 20px;
+      color: #1a237e;
+      text-align: center;
+    }
+
+    .comments form textarea {
+      width: 100%;
+      height: 90px;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .comments form button {
+      background: #1a4db3;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .comments form button:hover {
+      background: #0f3a91;
+    }
+
+    .comment-list {
+      margin-top: 20px;
+    }
+
+    .comment {
+      background: #f1f1f1;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Responsive Mobile */
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 20px;
+      }
+
+      header .brand {
+        font-size: 1.3rem;
+      }
+
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      VanguardSMP
+      <span>Official Stream</span>
+    </div>
+    <div class="logo-kanan">
+      <img src="fanglogo.jpg" alt="Logo Vanguard SMP">
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Server Minecraft Open Member</h1>
+    <p>Telah memiliki lebih dari 5 grup cabang dengan total <b>300+ member</b> aktif di server. Gabung dan nikmati petualangan seru bersama komunitas!</p>
+    <a href="https://chat.whatsapp.com/LVOkRs5t4bK74g9vtjYAhU" class="btn">JOIN SEKARANG</a>
+  </section>
+
+  <!-- Informasi -->
+  <section class="info-section">
+    <div id="version-card">
+      <h3>VERSI MINECRAFT</h3>
+      <ul>
+        <li><b>JAVA :</b> 1.20.1</li>
+        <li><b>BEDROCK :</b> 1.20.32 (Versi Terbaru)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>INFORMASI SERVER</h3>
+      <ul>
+        <li>Cara Bermain</li>
+        <li>Tema</li>
+        <li>Senjata & Skill</li>
+        <li>Material</li>
+        <li>Keuangan</li>
+      </ul>
+      <a href="halaman2.html" class="btn">Baca Selengkapnya</a>
+    </div>
+    <div class="card">
+      <h3>FITUR</h3>
+      <ul>
+        <li>Economy</li>
+        <li>Clan</li>
+        <li>Gacha</li>
+        <li>Lobby</li>
+      </ul>
+      <a href="halaman3.html" class="btn">Lihat Semua Fitur</a>
+    </div>
+  </section>
+
+
+  <script>
+    // Efek fade-in saat scroll
+    const cards = document.querySelectorAll('.card, #version-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+
+   
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (input.value.trim() !== '') {
+        const newComment = document.createElement('div');
+        newComment.classList.add('comment');
+        newComment.textContent = input.value;
+        list.prepend(newComment);
+        input.value = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
