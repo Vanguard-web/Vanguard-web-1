@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitur VanguardSMP</title>
+  <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f5f6fa;
+      color: #333;
+    }
+
+    header {
+      padding: 15px;
+      background: #0d1b2a;
+      color: #fff;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .feature {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease;
+    }
+
+    .feature.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature h2 {
+      margin-top: 0;
+      color: #1a237e;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background: #1a237e;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      width: fit-content;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+
+    .back-btn.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-btn:hover {
+      background: #3949ab;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fitur VanguardSMP</h1>
+    <p>Server Minecraft dengan pengalaman berbeda ✨</p>
+  </header>
+
+  <div class="container">
+    <div class="feature">
+      <h2>1. Economy</h2>
+      <p>Economy adalah sistem mata uang dan perdagangan di server, 
+        di mana pemain bisa memperoleh uang (biasanya berupa coin atau saldo virtual) lewat aktivitas seperti 
+        mining, farming, quest, atau jual-beli item, lalu menggunakannya untuk berdagang dengan pemain lain, membeli resource dari shop, atau berinvestasi dalam bisnis dan pasar sehingga tercipta interaksi ekonomi yang hidup di dalam dunia permainan.</p>
+    </div>
+
+    <div class="feature">
+      <h2>2. Clan</h2>
+      <p>Clan adalah kelompok atau komunitas pemain yang bergabung dalam satu tim, 
+        biasanya memiliki nama, markas, dan tujuan bersama seperti melindungi wilayah, 
+        berperang dengan clan lain, berdagang, atau sekadar membangun bersama, 
+        sehingga sistem ini memperkuat kerja sama, strategi, 
+        dan identitas antar pemain dalam server.</p>
+    </div>
+
+    <div class="feature">
+      <h2>3. Gacha</h2>
+      <p>Gacha adalah sistem undian berhadiah di server, 
+        di mana pemain menggunakan mata uang, tiket, 
+        atau kunci khusus untuk memutar “gacha” dan mendapatkan item acak mulai dari barang biasa hingga item langka atau legendaris, 
+        sehingga menambah unsur keberuntungan, kejutan, dan keseruan dalam progres permainan.</p>
+    </div>
+
+    <div class="feature">
+      <h2>4. Lobby</h2>
+      <p>Lobby adalah area awal atau pusat server tempat pemain pertama kali masuk, 
+        biasanya didesain sebagai ruangan atau dunia kecil yang aman, 
+        berisi portal atau menu untuk memilih mode permainan (seperti survival, minigames, atau fantasi), 
+        sekaligus menjadi tempat berkumpul, berinteraksi, dan menunggu sebelum memulai petualangan utama.</p>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Kembali ke Halaman Utama</a>
+  </div>
+
+  <script>
+    // Efek muncul saat scroll
+    const cards = document.querySelectorAll('.feature, .back-btn');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
