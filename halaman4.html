@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Kode Redeem — VanguardSMP</title>
+  <meta name="description" content="Daftar kode redeem aktif VanguardSMP yang bisa kamu gunakan untuk mendapatkan hadiah spesial di server Minecraft.">
+  <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f5f6fa;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: #0d1b2a;
+      color: white;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    header h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    header a {
+      color: #fff;
+      font-size: 0.9rem;
+      text-decoration: none;
+      background: #1a4db3;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    header a:hover { background: #0f3a91; }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: auto;
+      opacity: 0.9;
+    }
+
+    /* List Kode Redeem */
+    .list-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .redeem-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .redeem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .redeem-card h3 {
+      margin-bottom: 8px;
+      color: #1a237e;
+      font-size: 1.2rem;
+    }
+
+    .redeem-card p {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .aktif { background: #e0f7e9; color: #1b5e20; }
+    .habis { background: #ffebee; color: #c62828; }
+    .terpakai { background: #fff3e0; color: #e65100; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.6rem; }
+      .redeem-card { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h2>VanguardSMP</h2>
+    <a href="index.html">🏠 Kembali</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Daftar Kode Redeem</h1>
+    <p>Gunakan kode berikut di server Minecraft VanguardSMP untuk mendapatkan hadiah spesial 🎁</p>
+  </section>
+
+  <!-- List Section -->
+  <div class="list-section">
+
+    <div class="redeem-card">
+      <h3>Kode: <b>VANGUARD2025</b></h3>
+      <p>🎁 Hadiah: 5.000 Coin + Rare Item</p>
+      <span class="status aktif">Aktif</span>
+    </div>
+
+    <div class="redeem-card">
+      <h3>Kode: <b>OPENMEMBER300</b></h3>
+      <p>🎁 Hadiah: Special Rank 7 Hari</p>
+      <span class="status terpakai">Sudah Terpakai</span>
+    </div>
+
+    <div class="redeem-card">
+      <h3>Kode: <b>LEGENDARYRANK</b></h3>
+      <p>🎁 Hadiah: Legendary Rank 1 Hari</p>
+      <span class="status habis">Habis</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
