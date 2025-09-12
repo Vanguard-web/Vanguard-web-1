@@ -7,23 +7,37 @@
   <meta name="description" content="Daftar rank di VanguardSMP dari Pemula hingga Legendary, dengan berbagai keuntungan menarik.">
   <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
   <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f5f6fa;
-      color: #333;
+      background: #0d1117;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* particle background */
+    #particles {
+      position: fixed;
+      top:0;left:0;width:100%;height:100%;
+      z-index: -1;
+      background: linear-gradient(180deg,#0d1117,#1c2833);
     }
 
     header {
       padding: 20px;
-      background: #0d1b2a;
+      background: rgba(13,27,42,0.9);
       color: #fff;
       text-align: center;
+      position: sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
 
-    header h1 {
-      margin: 0;
-    }
+    header h1 {margin:0; color:#1abc9c;}
+    header p {margin-top:8px; opacity:0.9;}
 
     .container {
       max-width: 1000px;
@@ -35,7 +49,7 @@
       text-align: center;
       margin-top: 40px;
       margin-bottom: 20px;
-      color: #0d1b2a;
+      color: #1abc9c;
     }
 
     .rank-section {
@@ -45,10 +59,10 @@
     }
 
     .rank-card {
-      background: #fff;
+      background: rgba(255,255,255,0.05);
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       text-align: center;
       opacity: 0;
       transform: translateY(30px);
@@ -60,30 +74,20 @@
       transform: translateY(0);
     }
 
-    .rank-card h3 {
-      margin-top: 0;
-      color: #1a237e;
-    }
-
-    .rank-card p {
-      font-size: 14px;
-      line-height: 1.6;
-    }
+    .rank-card h3 {margin-top:0;color:#1abc9c;}
+    .rank-card p {font-size:14px;line-height:1.6;color:#ddd;}
 
     .btn {
       display: inline-block;
       margin-top: 15px;
       padding: 10px 20px;
-      background: #1a237e;
+      background: #1abc9c;
       color: #fff;
       border-radius: 8px;
       text-decoration: none;
       transition: background 0.3s;
     }
-
-    .btn:hover {
-      background: #3949ab;
-    }
+    .btn:hover {background:#16a085;}
 
     .back-btn {
       display: inline-block;
@@ -94,14 +98,58 @@
       border-radius: 10px;
       text-decoration: none;
       transition: background 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
     }
+    .back-btn.show {opacity:1;transform:translateY(0);}
+    .back-btn:hover {background:#1b263b;}
 
-    .back-btn:hover {
-      background: #1b263b;
+    /* styling gambar kecil */
+    .rank-card img {
+      margin-top: 15px;
+      width: 120px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s;
     }
+    .rank-card img:hover {transform:scale(1.05);}
+
+    /* modal fullscreen */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left:0;top:0;width:100%;height:100%;
+      background: rgba(0,0,0,0.8);
+      justify-content:center;
+      align-items:center;
+    }
+    .modal img {
+      max-width:90%;
+      max-height:90%;
+      border-radius:10px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.5);
+    }
+    .close-btn {
+      position:absolute;
+      top:20px;right:30px;
+      font-size:40px;
+      color:white;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+    .close-btn:hover {color:#ff4444;}
   </style>
 </head>
 <body>
+  <!-- Particle Background -->
+  <canvas id="particles"></canvas>
+
   <header>
     <h1>Daftar Rank VanguardSMP</h1>
     <p>Dapatkan rank spesial dengan keuntungan menarik 🎖️</p>
@@ -112,37 +160,38 @@
     <section class="rank-section">
       <div class="rank-card">
         <h3>VIP</h3>
-        <p>VIP memberikan efek regeneration agar darah kalian bisa bertambah. Cocok untuk pemula yang butuh ketahanan ekstra.</p>
+        <p>VIP memberikan efek regeneration agar darah kalian bisa bertambah. Cocok untuk pemula.</p>
+        <p>Harga: Rp. 10.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20VIP" class="btn">Pesan Rank via WhatsApp</a>
       </div>
-
       <div class="rank-card">
         <h3>MVP</h3>
-        <p>MVP memberikan efek Regeneration dan Saturation sehingga darah & hunger bar kalian bertambah terus. Sangat membantu pemula!</p>
+        <p>MVP memberikan efek Regeneration dan Saturation sehingga darah & hunger bar kalian bertambah terus.</p>
+        <p>Harga: Rp. 15.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20MVP" class="btn">Pesan Rank via WhatsApp</a>
       </div>
-
       <div class="rank-card">
         <h3>Legend</h3>
-        <p>Rank tinggi dengan fitur eksklusif: memberikan efek Regeneration,strange dan Saturation sehingga darah & hunger bar kalian bertambah terus,serta membuat damage kalian semakin bertambah.</p>
+        <p>Rank tinggi dengan efek Regeneration, Strength, dan Saturation yang meningkatkan darah, hunger, dan damage.</p>
+        <p>Harga: Rp. 20.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Legend" class="btn">Pesan Rank via WhatsApp</a>
       </div>
-
       <div class="rank-card">
         <h3>Mythic</h3>
-        <p>Rank elit di VanguardSMP Memberikan efek yang sama dengan rank legend, namun di tambah dengan efek Haste yang membuat kamu dapat menambang lebih cepat</p>
+        <p>Efek sama dengan Legend, ditambah efek Haste untuk menambang lebih cepat.</p>
+        <p>Harga: Rp. 30.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Mythic" class="btn">Pesan Rank via WhatsApp</a>
       </div>
-
       <div class="rank-card">
         <h3>Rich Eagle</h3>
-        <p>Rank premium yang memberikan segala jenis efek dan di tambah dengan fitur fly yang membuat kalian bisa terbang dengan bebas dan kebal dari damage saat terjatuh dari ketinggian.</p>
+        <p>Memberikan semua efek + fitur fly dan kebal dari damage jatuh.</p>
+        <p>Harga: Rp. 50.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Rich%20Eagle" class="btn">Pesan Rank via WhatsApp</a>
       </div>
-
       <div class="rank-card">
         <h3>Support</h3>
-        <p>Rank khusus untuk para supporter setia VanguardSMP yang ingin berkontribusi lebih. rank yang memberikan segala jenis efek dengan fitur terbang dan ditambah dengan efek custom</p>
+        <p>Rank supporter dengan semua efek, fitur fly, dan efek custom.</p>
+        <p>Harga: Rp. 100.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Support" class="btn">Pesan Rank via WhatsApp</a>
       </div>
     </section>
@@ -151,26 +200,31 @@
     <section class="rank-section">
       <div class="rank-card">
         <h3>Disciple</h3>
-        <p>Rank Disciple memberikan seluruh efek support level 4 ditambah dengan senjata khusus rank desciple.</p>
+        <p>Efek Support lv 4 + senjata khusus Disciple.</p>
+        <p>Harga: Rp. 200.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Disciple" class="btn">Pesan Rank via WhatsApp</a>
+        <img src="disciple.jpg" alt="Disciple">
       </div>
-
       <div class="rank-card">
         <h3>Hunter</h3>
-        <p>Rank Hunter memberikan seluruh efek support level 4 ditambah dengan senjata khusus rank desciple disertai dengan senjata tambahan dari rank hunter itu sendiri dan ditambah dengan hunter mask yang membuat kamu jauh lebih kuat.</p>
+        <p>Efek Support lv 4 + senjata Disciple + senjata Hunter + Hunter Mask.</p>
+        <p>Harga: Rp. 250.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Hunter" class="btn">Pesan Rank via WhatsApp</a>
+        <img src="hunter.jpg" alt="Hunter">
       </div>
-
       <div class="rank-card">
         <h3>Master</h3>
-        <p> Rank Master memberikan seluruh effect Support lv 4 + all Weapons dari rank Master Ke Disciple + Master Horn,Hunter Mask.</p>
+        <p>Efek Support lv 4 + semua senjata Master-Disciple + Master Horn & Hunter Mask.</p>
+        <p>Harga: Rp. 350.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Master" class="btn">Pesan Rank via WhatsApp</a>
+        <img src="master.jpg" alt="Master">
       </div>
-
       <div class="rank-card">
         <h3>Grand Master</h3>
-        <p>  Rank Grand Master memberikan seluruh effect Support lv 4 + All Weapons dari rank GrandMaster Ke Disciple + GrandMaster Crown,Master horn,Hunter Mask .</p>
+        <p>Efek Support lv 4 + semua senjata GrandMaster-Disciple + GrandMaster Crown, Master Horn, Hunter Mask.</p>
+        <p>Harga: Rp. 400.000,-</p>
         <a href="https://wa.me/6282119579105?text=Halo%20saya%20ingin%20pesan%20Rank%20Grand%20Master" class="btn">Pesan Rank via WhatsApp</a>
+        <img src="grandmaster.jpg" alt="Grand Master">
       </div>
     </section>
 
@@ -179,20 +233,66 @@
     </div>
   </div>
 
+  <!-- Modal untuk gambar -->
+  <div class="modal" id="imgModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImage" src="" alt="Preview">
+  </div>
+
   <script>
-    // Efek animasi fade-in
-    const rankCards = document.querySelectorAll('.rank-card');
+    // Scroll reveal animasi
+    const elements = document.querySelectorAll('.rank-card, .back-btn');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
     }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
 
-    rankCards.forEach(card => observer.observe(card));
+    // Modal gambar
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeModal = document.getElementById("closeModal");
+    document.querySelectorAll(".rank-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+    closeModal.addEventListener("click", () => modal.style.display="none");
+    modal.addEventListener("click", (e)=>{if(e.target===modal) modal.style.display="none";});
+
+    // Particle background
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        size: Math.random()*3+1,
+        speedX: (Math.random()-0.5)*1,
+        speedY: (Math.random()-0.5)*1
+      });
+    }
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX; p.y += p.speedY;
+        if(p.x<0||p.x>canvas.width) p.speedX*=-1;
+        if(p.y<0||p.y>canvas.height) p.speedY*=-1;
+        ctx.fillStyle = '#1abc9c';
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+    window.addEventListener('resize',()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
-
-
