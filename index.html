@@ -4,283 +4,190 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VanguardSMP — Official Stream</title>
-  <meta name="description" content="VanguardSMP adalah server Minecraft dengan 300+ member aktif, tersedia untuk JAVA dan BEDROCK. Ayo bergabung sekarang juga!">
   <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
   <style>
-    /* Reset dasar */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f6fa;
-      color: #333;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d1117;
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    /* ===== LOADING SCREEN ===== */
+    #loading-screen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .loading-text {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #1abc9c;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .progress-bar {
+      width: 220px;
+      height: 22px;
+      border: 2px solid #1abc9c;
+      background: #000;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #1abc9c, #16a085);
+      transition: width 0.3s ease;
     }
 
-    /* Header */
+    /* ===== PARTICLE CANVAS ===== */
+    #particles {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background: linear-gradient(180deg,#0d1117,#1c2833);
+    }
+
+    /* ===== HEADER ===== */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      background: #0d1b2a;
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-
     header .brand {
-      text-align: center;
       font-size: 1.6rem;
       font-weight: 700;
+      color: #1abc9c;
     }
-
     header .brand span {
       display: block;
-      font-weight: 400;
-      font-size: 0.9rem;
-      color: #b0bec5;
+      font-size: 0.85rem;
+      color: #bbb;
     }
-
     header .logo-kanan img {
-      height: 55px;
-      width: 55px;
-      object-fit: cover;
+      height: 50px;
+      width: 50px;
       border-radius: 50%;
-      border: 2px solid #fff;
-      transition: transform 0.3s ease;
+      border: 2px solid #1abc9c;
       cursor: pointer;
     }
 
-    header .logo-kanan img:hover {
-      transform: rotate(10deg) scale(1.1);
-    }
-
-    /* Hero Section */
+    /* ===== HERO ===== */
     .hero {
       text-align: center;
-      padding: 90px 20px;
-      background: linear-gradient(180deg, #2c3e50, #34495e);
+      padding: 100px 20px;
       color: white;
+      animation: fadeIn 2s ease-in-out;
     }
-
     .hero h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-      animation: fadeDown 1s ease-in-out;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px #1abc9c;
     }
-
     .hero p {
-      font-size: 1rem;
-      margin-bottom: 25px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 25px;
     }
-
-    .hero .btn {
-      display: inline-block;
-      background: #1a4db3;
+    .btn {
+      background: #1abc9c;
       color: #fff;
-      padding: 14px 32px;
+      padding: 12px 30px;
       border-radius: 8px;
       font-weight: bold;
-      transition: all 0.3s ease-in-out;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #16a085;
+      transform: scale(1.05);
     }
 
-    .hero .btn:hover {
-      background: #0f3a91;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
-    }
-
-    /* Section Info */
+    /* ===== INFO CARDS ===== */
     .info-section {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
       padding: 70px 20px;
-      background: #fff;
     }
-
     .card {
-      background: white;
+      background: rgba(255,255,255,0.05);
       padding: 25px;
       border-radius: 15px;
       width: 300px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+    .card.show { transform: translateY(0); opacity: 1; }
+    .card h3 { margin-bottom: 10px; color: #1abc9c; }
+    .card ul { list-style: none; text-align: left; display: inline-block; }
+    .card ul li { margin: 6px 0; }
+
+    /* ===== THANK YOU ===== */
+    .thankyou {
+      text-align: center;
+      margin: 60px auto;
+      max-width: 800px;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      background: rgba(255,255,255,0.05);
+      padding: 25px 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
       opacity: 0;
       transform: translateY(40px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 280px;
-    }
-
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
       transition: all 0.6s ease-in-out;
     }
+    .thankyou.show { opacity: 1; transform: translateY(0); }
+    .thankyou b { color: #1abc9c; }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: #1a237e;
-    }
-
-    .card ul {
-      text-align: left;
-      margin: 0 auto;
-      display: inline-block;
-    }
-
-    .card ul li {
-      margin: 6px 0;
-    }
-
-    /* Card untuk VERSI MINECRAFT */
-    #version-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      width: 300px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      display: flex;
-      flex-direction: column;
-      min-height: 280px;
-    }
-
-    #version-card.show {
-      opacity: 10;
-      transform: translateY(0);
-      transition: all 0.6s ease-in-out;
-    }
-
-    #version-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
-    }
-
-    #version-card h3 {
-      margin-bottom: 12px;
-      color: #1a237e;
-    }
-
-    #version-card ul {
-      text-align: left;
-      margin: 0 auto;
-      display: inline-block;
-    }
-
-    #version-card ul li {
-      margin: 6px 0;
-    }
-
-    /* Tombol di card */
-    .card .btn {
-      margin-top: 18px;
-      background: #1a4db3;
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-      align-self: center;
-    }
-
-    .card .btn:hover {
-      background: #0f3a91;
-      transform: scale(1.05);
-    }
-
-    /* Animations */
-    @keyframes fadeDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    /* Responsive Mobile */
-    @media (max-width: 768px) {
-      header {
-        padding: 12px 20px;
-      }
-
-      header .brand {
-        font-size: 1.3rem;
-      }
-
-      .hero {
-        padding: 60px 15px;
-      }
-
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-
-      .hero p {
-        font-size: 0.95rem;
-      }
-
-      .card {
-        width: 90%;
-      }
-    }
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
   </style>
 </head>
 <body>
+  <!-- LOADING -->
+  <div id="loading-screen">
+    <div class="loading-text">Loading Vanguard SMP...</div>
+    <div class="progress-bar"><div class="progress"></div></div>
+  </div>
 
-  <!-- Header -->
+  <!-- PARTICLE BACKGROUND -->
+  <canvas id="particles"></canvas>
+
+  <!-- HEADER -->
   <header>
-    <div class="brand">
-      VanguardSMP
-      <span>Official Stream</span>
-    </div>
-    <div class="logo-kanan">
-      <a href="halaman4.html">
-        <img src="fanglogo.jpg" alt="Logo Vanguard SMP" onclick="window.location.href='halaman4.html'">
-      </a>
-    </div>
+    <div class="brand">VanguardSMP <span>Official Stream</span></div>
+    <div class="logo-kanan"><img src="fanglogo.jpg"></div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="hero">
-    <h1>Server Minecraft Open Member</h1>
-    <p>Telah memiliki lebih dari 5 grup cabang dengan total <b>300+ member</b> aktif di server. Gabung dan nikmati petualangan seru bersama komunitas!</p>
+    <h1>⚔️ Server Minecraft Open Member ⚔️</h1>
+    <p>Telah memiliki lebih dari <b>300+ member</b> aktif di server. Gabung dan nikmati petualangan seru bersama komunitas!</p>
     <a href="https://chat.whatsapp.com/LVOkRs5t4bK74g9vtjYAhU" class="btn">JOIN SEKARANG</a>
   </section>
 
-  <!-- Informasi -->
+  <!-- INFO SECTION -->
   <section class="info-section">
-    <div id="version-card">
+    <div class="card">
       <h3>VERSI MINECRAFT</h3>
       <ul>
         <li><b>JAVA :</b> 1.20.1</li>
@@ -311,19 +218,65 @@
     </div>
   </section>
 
+  <!-- THANK YOU -->
+  <div class="thankyou">
+    🌟 <b>Ucapan Terima Kasih</b> 🌟 <br><br>
+    Terima kasih kepada <b>Anomali</b> & <b>Tante Yuuki</b> atas dukungannya 🥺.<br>
+    Special thanks untuk <b>Atmin Zaki</b> yang setia menjaga server.<br><br>
+    ❤️ Kalian semua adalah alasan server ini terus hidup ❤️
+  </div>
+
   <script>
-    // Efek fade-in saat scroll
-    const cards = document.querySelectorAll('.card, #version-card');
+    // ==== LOADING SCREEN ====
+    const progress = document.querySelector('.progress');
+    let load = 0;
+    const loading = setInterval(() => {
+      load += 5;
+      progress.style.width = load + '%';
+      if (load >= 100) {
+        clearInterval(loading);
+        document.getElementById('loading-screen').style.display = 'none';
+      }
+    }, 200);
+
+    // ==== SCROLL REVEAL ====
+    const cards = document.querySelectorAll('.card, .thankyou');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.2 });
-
     cards.forEach(card => observer.observe(card));
-  </script>
 
+    // ==== PARTICLE BACKGROUND ====
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        size: Math.random()*3+1,
+        speedX: (Math.random()-0.5)*1,
+        speedY: (Math.random()-0.5)*1
+      });
+    }
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX; p.y += p.speedY;
+        if(p.x<0||p.x>canvas.width) p.speedX*=-1;
+        if(p.y<0||p.y>canvas.height) p.speedY*=-1;
+        ctx.fillStyle = '#1abc9c';
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+    window.addEventListener('resize',()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
