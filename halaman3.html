@@ -6,22 +6,45 @@
   <title>Fitur VanguardSMP</title>
   <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
   <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f5f6fa;
-      color: #333;
+      background: #0d1117;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Particle background */
+    #particles {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background: linear-gradient(180deg,#0d1117,#1c2833);
     }
 
     header {
       padding: 15px;
-      background: #0d1b2a;
+      background: rgba(13, 27, 42, 0.9);
       color: #fff;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
     }
 
     header h1 {
       margin: 0;
+      font-size: 2rem;
+      color: #1abc9c;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 1rem;
+      opacity: 0.85;
     }
 
     .container {
@@ -31,11 +54,11 @@
     }
 
     .feature {
-      background: #fff;
+      background: rgba(255,255,255,0.05);
       padding: 20px;
       margin-bottom: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.7s ease;
@@ -48,14 +71,19 @@
 
     .feature h2 {
       margin-top: 0;
-      color: #1a237e;
+      color: #1abc9c;
+    }
+
+    .feature p {
+      color: #ddd;
+      line-height: 1.6;
     }
 
     .back-btn {
       display: block;
       margin: 30px auto;
       padding: 10px 20px;
-      background: #1a237e;
+      background: #1abc9c;
       color: #fff;
       border-radius: 8px;
       text-decoration: none;
@@ -72,11 +100,14 @@
     }
 
     .back-btn:hover {
-      background: #3949ab;
+      background: #16a085;
     }
   </style>
 </head>
 <body>
+  <!-- Particle Background -->
+  <canvas id="particles"></canvas>
+
   <header>
     <h1>Fitur VanguardSMP</h1>
     <p>Server Minecraft dengan pengalaman berbeda ✨</p>
@@ -86,42 +117,36 @@
     <div class="feature">
       <h2>1. Economy</h2>
       <p>Economy adalah sistem mata uang dan perdagangan di server, 
-        di mana pemain bisa memperoleh uang (biasanya berupa coin atau saldo virtual) lewat aktivitas seperti 
-        mining, farming, quest, atau jual-beli item, lalu menggunakannya untuk berdagang dengan pemain lain, membeli resource dari shop, atau berinvestasi dalam bisnis dan pasar sehingga tercipta interaksi ekonomi yang hidup di dalam dunia permainan.</p>
+        di mana pemain bisa memperoleh uang lewat aktivitas seperti mining, farming, quest, atau jual-beli item, 
+        lalu menggunakannya untuk berdagang, membeli resource dari shop, atau berinvestasi sehingga tercipta interaksi ekonomi yang hidup.</p>
     </div>
 
     <div class="feature">
       <h2>2. Clan</h2>
       <p>Clan adalah kelompok atau komunitas pemain yang bergabung dalam satu tim, 
-        biasanya memiliki nama, markas, dan tujuan bersama seperti melindungi wilayah, 
-        berperang dengan clan lain, berdagang, atau sekadar membangun bersama, 
-        sehingga sistem ini memperkuat kerja sama, strategi, 
-        dan identitas antar pemain dalam server.</p>
+        biasanya memiliki nama, markas, dan tujuan bersama seperti melindungi wilayah, berperang dengan clan lain, berdagang, 
+        atau membangun bersama, sehingga memperkuat kerja sama dan identitas antar pemain.</p>
     </div>
 
     <div class="feature">
       <h2>3. Gacha</h2>
-      <p>Gacha adalah sistem undian berhadiah di server, 
-        di mana pemain menggunakan mata uang, tiket, 
-        atau kunci khusus untuk memutar “gacha” dan mendapatkan item acak mulai dari barang biasa hingga item langka atau legendaris, 
-        sehingga menambah unsur keberuntungan, kejutan, dan keseruan dalam progres permainan.</p>
+      <p>Gacha adalah sistem undian berhadiah, di mana pemain menggunakan mata uang atau tiket khusus 
+        untuk memutar “gacha” dan mendapatkan item acak mulai dari barang biasa hingga langka, 
+        sehingga menambah unsur keberuntungan dan keseruan.</p>
     </div>
 
     <div class="feature">
       <h2>4. Lobby</h2>
       <p>Lobby adalah area awal atau pusat server tempat pemain pertama kali masuk, 
-        biasanya didesain sebagai ruangan atau dunia kecil yang aman, 
-        berisi portal atau menu untuk memilih mode permainan (seperti survival, minigames, atau fantasi), 
-        sekaligus menjadi tempat berkumpul, berinteraksi, dan menunggu sebelum memulai petualangan utama.</p>
+        biasanya berisi portal atau menu untuk memilih mode permainan (survival, minigames, dll), 
+        sekaligus tempat berkumpul dan berinteraksi.</p>
     </div>
 
-     <div class="feature">
-      <h2>4. Rank</h2>
-      <p>Rank Adalah Fitur Dimana Kalian akan mendapat efek efek khusus, 
-        yang dimana efek khusus itu akan sangat membantu kalian dalam bermain,
-        Rank juga dapat memberikan kalian beberapa item spesial seperti armor dan senjata
-        Rank Dapat Kalian Beli Ke admind atau owner dari vanguard</p>
-        <a href="Rank.html" class="back-btn">List Harga Rank</a>
+    <div class="feature">
+      <h2>5. Rank</h2>
+      <p>Rank memberikan efek khusus dan item spesial seperti armor dan senjata. 
+        Rank dapat kalian beli langsung ke admin atau owner Vanguard.</p>
+      <a href="Rank.html" class="back-btn">List Harga Rank</a>
     </div>
 
     <a href="index.html" class="back-btn">⬅ Kembali ke Halaman Utama</a>
@@ -132,13 +157,42 @@
     const cards = document.querySelectorAll('.feature, .back-btn');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
     }, { threshold: 0.2 });
-
     cards.forEach(card => observer.observe(card));
+
+    // Particle background
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        size: Math.random()*3+1,
+        speedX: (Math.random()-0.5)*1,
+        speedY: (Math.random()-0.5)*1
+      });
+    }
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.x += p.speedX; p.y += p.speedY;
+        if(p.x<0||p.x>canvas.width) p.speedX*=-1;
+        if(p.y<0||p.y>canvas.height) p.speedY*=-1;
+        ctx.fillStyle = '#1abc9c';
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+    window.addEventListener('resize',()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
