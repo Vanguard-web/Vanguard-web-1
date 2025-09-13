@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vanguard-web.github.io/Vanguard-web-1/sitemap.xml
