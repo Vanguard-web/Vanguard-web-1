@@ -2,25 +2,28 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="google-site-verification" content="ElALkSYvyVs7JSyMHiT2XFfPFv8zsqt_bVTu6twSM00" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Verifikasi Google Search Console -->
+  <meta name="google-site-verification" content="ElALkSYvyVs7JSyMHiT2XFfPFv8zsqt_bVTu6twSM00" />
+
   <title>VanguardSMP — Official Stream</title>
 
   <!-- Favicon -->
   <link rel="icon" href="fanglogo.jpg" type="image/x-icon">
 
   <!-- Meta SEO -->
-  <meta name="description" content="VanguardSMP — Official Stream, server Minecraft open member dengan komunitas aktif dan pengalaman bermain seru.">
-  <meta name="keywords" content="VanguardSMP, Minecraft Server, Minecraft SMP Indonesia, Official Stream, SMP Open Member">
+  <meta name="description" content="VanguardSMP — Official Stream. Server Minecraft open member dengan komunitas seru dan aktif, hadir untuk memberikan pengalaman bermain terbaik.">
+  <meta name="keywords" content="VanguardSMP, Minecraft Server, SMP Indonesia, Official Stream, Open Member">
 
-  <!-- Open Graph (untuk media sosial & Google preview) -->
+  <!-- Open Graph (untuk sosial media) -->
   <meta property="og:title" content="VanguardSMP — Official Stream">
-  <meta property="og:description" content="Server Minecraft open member dengan komunitas aktif dan petualangan seru.">
+  <meta property="og:description" content="Server Minecraft open member dengan komunitas seru dan aktif.">
   <meta property="og:image" content="https://vanguard-web.github.io/Vanguard-web-1/fanglogo.jpg">
   <meta property="og:url" content="https://vanguard-web.github.io/Vanguard-web-1/">
   <meta property="og:type" content="website">
 
-  <!-- Structured Data Logo -->
+  <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,6 +31,20 @@
     "name": "VanguardSMP",
     "url": "https://vanguard-web.github.io/Vanguard-web-1/",
     "logo": "https://vanguard-web.github.io/Vanguard-web-1/fanglogo.jpg"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "VanguardSMP",
+    "url": "https://vanguard-web.github.io/Vanguard-web-1/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vanguard-web.github.io/Vanguard-web-1/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
@@ -39,8 +56,7 @@
       color: #fff;
       overflow-x: hidden;
     }
-
-    /* ===== LOADING SCREEN ===== */
+    /* === Loading Screen === */
     #loading-screen {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -71,16 +87,14 @@
       background: linear-gradient(90deg, #1abc9c, #16a085);
       transition: width 0.3s ease;
     }
-
-    /* ===== PARTICLE CANVAS ===== */
+    /* === Particle Background === */
     #particles {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       z-index: -1;
       background: linear-gradient(180deg,#0d1117,#1c2833);
     }
-
-    /* ===== HEADER ===== */
+    /* === Header === */
     header {
       display: flex;
       justify-content: space-between;
@@ -115,8 +129,7 @@
       box-shadow: 0 0 12px #1abc9c;
       transform: scale(1.08);
     }
-
-    /* ===== HERO ===== */
+    /* === Hero Section === */
     .hero {
       text-align: center;
       padding: 100px 20px;
@@ -146,8 +159,7 @@
       background: #16a085;
       transform: scale(1.05);
     }
-
-    /* ===== INFO CARDS ===== */
+    /* === Info Cards === */
     .info-section {
       display: flex;
       flex-wrap: wrap;
@@ -170,8 +182,7 @@
     .card h3 { margin-bottom: 10px; color: #1abc9c; }
     .card ul { list-style: none; text-align: left; display: inline-block; }
     .card ul li { margin: 6px 0; }
-
-    /* ===== THANK YOU ===== */
+    /* === Thank You Section === */
     .thankyou {
       text-align: center;
       margin: 60px auto;
@@ -188,22 +199,20 @@
     }
     .thankyou.show { opacity: 1; transform: translateY(0); }
     .thankyou b { color: #1abc9c; }
-
-    /* ===== ANIMATIONS ===== */
     @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
   </style>
 </head>
 <body>
-  <!-- LOADING -->
+  <!-- Loading -->
   <div id="loading-screen">
     <div class="loading-text">Loading Vanguard SMP...</div>
     <div class="progress-bar"><div class="progress"></div></div>
   </div>
 
-  <!-- PARTICLE BACKGROUND -->
+  <!-- Particle Background -->
   <canvas id="particles"></canvas>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header>
     <div class="brand">VanguardSMP <span>Official Stream</span></div>
     <div class="logo-kanan">
@@ -213,14 +222,14 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
     <h1>⚔️ Server Minecraft Open Member ⚔️</h1>
     <p>Telah memiliki lebih dari <b>300+ member</b> aktif di server. Gabung dan nikmati petualangan seru bersama komunitas!</p>
     <a href="https://chat.whatsapp.com/LVOkRs5t4bK74g9vtjYAhU" class="btn">JOIN SEKARANG</a>
   </section>
 
-  <!-- INFO SECTION -->
+  <!-- Info Section -->
   <section class="info-section">
     <div class="card">
       <h3>VERSI MINECRAFT</h3>
@@ -253,7 +262,7 @@
     </div>
   </section>
 
-  <!-- THANK YOU -->
+  <!-- Thank You -->
   <div class="thankyou">
     🌟 <b>Ucapan Terima Kasih</b> 🌟 <br><br>
     Terima kasih kepada <b>Anomali</b> & <b>Tante Yuuki</b> atas dukungannya 🥺.<br>
@@ -262,7 +271,7 @@
   </div>
 
   <script>
-    // ==== LOADING SCREEN ====
+    // Loading screen
     const progress = document.querySelector('.progress');
     let load = 0;
     const loading = setInterval(() => {
@@ -274,14 +283,14 @@
       }
     }, 200);
 
-    // ==== SCROLL REVEAL ====
+    // Scroll reveal
     const cards = document.querySelectorAll('.card, .thankyou');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
     }, { threshold: 0.2 });
     cards.forEach(card => observer.observe(card));
 
-    // ==== PARTICLE BACKGROUND ====
+    // Particle background
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
